@@ -28,22 +28,6 @@
             </div>
         </div>
 
-
-        <!-- Scripts de Bootstrap (jQuery y Popper.js) -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-
-        <!-- Script de Bootstrap -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-        <!-- Alerta Eliminacion -->
-        <script type="text/javascript">
-            function confirmarEliminacion() {
-                var confirmacion = confirm('¿Estás seguro de que quieres eliminar este registro?');
-                return confirmacion;
-            }
-        </script>
-
         <asp:SqlDataSource ID="SqlDataCategorias" runat="server" ConnectionString="<%$ ConnectionStrings:cadena %>" DeleteCommand="DELETE FROM [DenunciaCategorias] WHERE [id] = @id" InsertCommand="INSERT INTO [DenunciaCategorias] ([nombre]) VALUES (@nombre)" ProviderName="<%$ ConnectionStrings:cadena.ProviderName %>" SelectCommand="SELECT * FROM [DenunciaCategorias]" UpdateCommand="UPDATE [DenunciaCategorias] SET [nombre] = @nombre WHERE [id] = @id">
             <DeleteParameters>
                 <asp:ControlParameter ControlID="ListBox1" Name="id" PropertyName="SelectedValue" Type="Int32" />
@@ -62,5 +46,19 @@
             </SelectParameters>
         </asp:SqlDataSource>
     </form>
+          <!-- Scripts de Bootstrap (jQuery y Popper.js) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+
+        <!-- Script de Bootstrap -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <!-- Alerta Eliminacion -->
+        <script type="text/javascript">
+            function confirmarEliminacion() {
+                var confirmacion = confirm('¿Estás seguro de que quieres eliminar este registro?');
+                return confirmacion;
+            }
+        </script>
 </body>
 </html>

@@ -4,13 +4,91 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>GESTION DENUNCIAS</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .mt-4 {
+            margin-top: 1.5rem !important;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
-<body>
-    <form id="form1" runat="server">
+<body class="bg-light text-center">
+    <form id="form1" runat="server" class="container">
         <div>
+            <h1 class="mt-4">GESTION DE DENUNCIAS</h1>
         </div>
+        <div class="form-group">
+            <asp:Label ID="Label1" runat="server" Text="Categoria: " ></asp:Label>
+            <asp:DropDownList ID="DropDownCategorias" runat="server" DataSourceID="SqlDataCategoria" DataTextField="nombre" DataValueField="id" CssClass="form-control">
+            </asp:DropDownList>
+        </div>
+        <div class="form-group">
+            <asp:Label ID="Label2" runat="server" Text="Descripcion: "></asp:Label>
+            <asp:TextBox ID="TextBoxDescripcion" placeholder="Ingrese descripción de su denuncia" class="form-control form-control-lg mt-2" runat="server"></asp:TextBox>
+    
+        </div>
+        <asp:Button ID="agregarDenuncia" runat="server" Text="Nueva Denuncia" CssClass="btn btn-primary" OnClick="agregarDenuncia_Click" />
+           <asp:Button ID="editarDenuncia" CssClass="btn btn-warning" runat="server" Text="Editar" OnClick="editarDenuncia_Click" />
+        <asp:Button ID="eliminarDenuncia" CssClass="btn btn-danger" runat="server" Text="Eliminar" />
+<asp:GridView ID="GridViewDenuncias" runat="server" CssClass="table table-striped table-bordered mt-4" AutoGenerateColumns="False" DataKeyNames="id,Expr1" DataSourceID="SqlDataDenuncias" OnSelectedIndexChanged="GridViewDenuncias_SelectedIndexChanged">
+    <Columns>
+        <asp:CommandField ShowSelectButton="True" />
+        <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+        <asp:BoundField DataField="texto" HeaderText="texto" SortExpression="texto" />
+        <asp:BoundField DataField="idDenunciaCategoria" HeaderText="idDenunciaCategoria" SortExpression="idDenunciaCategoria" />
+        <asp:BoundField DataField="nombre" HeaderText="nombre" SortExpression="nombre" />
+        <asp:BoundField DataField="Expr1" HeaderText="Expr1" InsertVisible="False" ReadOnly="True" SortExpression="Expr1" />
+    </Columns>
+</asp:GridView>
+
+
+
+
+     
+
+        <asp:SqlDataSource ID="SqlDataCategoria" runat="server" ConnectionString="<%$ ConnectionStrings:cadena %>" DeleteCommand="DELETE FROM [DenunciaCategorias] WHERE [id] = @id" InsertCommand="INSERT INTO [DenunciaCategorias] ([nombre]) VALUES (@nombre)" SelectCommand="SELECT id, nombre FROM DenunciaCategorias" UpdateCommand="UPDATE [DenunciaCategorias] SET [nombre] = @nombre WHERE [id] = @id">
+            <DeleteParameters>
+                <asp:Parameter Name="id" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="nombre" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="nombre" Type="String" />
+                <asp:Parameter Name="id" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+    <!-- Scripts de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+
+    <!-- Script de Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <asp:SqlDataSource ID="SqlDataDenuncias" runat="server" ConnectionString="<%$ ConnectionStrings:cadena %>" DeleteCommand="DELETE FROM [Denuncias] WHERE [id] = @id" InsertCommand="INSERT INTO [Denuncias] ([texto], [idDenunciaCategoria]) VALUES (@texto, @idDenunciaCategoria)" SelectCommand="SELECT Denuncias.id, Denuncias.texto, Denuncias.idDenunciaCategoria, DenunciaCategorias.nombre, DenunciaCategorias.id AS Expr1 FROM Denuncias INNER JOIN DenunciaCategorias ON Denuncias.idDenunciaCategoria = DenunciaCategorias.id" UpdateCommand="UPDATE [Denuncias] SET [texto] = @texto, [idDenunciaCategoria] = @idDenunciaCategoria WHERE [id] = @id">
+            <DeleteParameters>
+                <asp:Parameter Name="id" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:ControlParameter ControlID="TextBoxDescripcion" Name="texto" PropertyName="Text" Type="String" />
+                <asp:ControlParameter ControlID="DropDownCategorias" Name="idDenunciaCategoria" PropertyName="SelectedValue" Type="Int32" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:ControlParameter ControlID="TextBoxDescripcion" Name="texto" PropertyName="Text" Type="String" />
+                <asp:ControlParameter ControlID="DropDownCategorias" Name="idDenunciaCategoria" PropertyName="SelectedValue" Type="Int32" />
+                <asp:Parameter Name="id" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
     </form>
-</body>
+    </body>
 </html>
