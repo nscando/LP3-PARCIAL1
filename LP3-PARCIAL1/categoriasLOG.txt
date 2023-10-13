@@ -1,0 +1,24 @@
+Fecha y Hora de Inserción: 20231013_114029
+Categoria Creada:Nueva Categoria txt
+
+------------------------------
+Fecha y Hora de Actualizacion: 20231013_114042
+Categoria Actualizada:Prueba Modif Log
+
+------------------------------
+Fecha y Hora de Inserción: 20231013_115940
+Categoria Creada: Prueba DEF
+
+------------------------------
+Fecha y Hora de Actualizacion: 20231013_115947
+Categoria Actualizada: Prueba DEF MOD
+
+------------------------------
+Fecha y Hora de Inserción: 20231013_120808
+Categoria Creada: Prueba5
+
+------------------------------
+Fecha y Hora de Actualizacion: 20231013_120820
+Categoria Actualizada: Prueba9
+
+------------------------------

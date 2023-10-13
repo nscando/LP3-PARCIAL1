@@ -7,10 +7,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>GESTION CATEGORIAS DENUNCIAS</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
 </head>
 <body class="bg-light text-center">
     <form id="form1" runat="server" class="container mt-5 text-center">
-        <h1 class="mt-4">GESTION CATEGORIAS DE DENUNCIAS</h1>
+        <asp:HyperLink ID="HyperLink1" CssClass="btn btn-info ml-2 mt-2" runat="server" NavigateUrl="~/Principal.aspx">Volver</asp:HyperLink>
+        <h1 class="mt-4">GESTION CATEGORIAS DE DENUNCIAS
+        </h1>
 
         <div class="form-group d-inline-block">
             <label for="TextBox1">Nombre Categoria: * </label>
@@ -46,19 +49,19 @@
             </SelectParameters>
         </asp:SqlDataSource>
     </form>
-          <!-- Scripts de Bootstrap (jQuery y Popper.js) -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <!-- Scripts de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 
-        <!-- Script de Bootstrap -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Script de Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <!-- Alerta Eliminacion -->
-        <script type="text/javascript">
-            function confirmarEliminacion() {
-                var confirmacion = confirm('¿Estás seguro de que quieres eliminar este registro?');
-                return confirmacion;
-            }
-        </script>
+    <!-- Alerta Eliminacion -->
+    <script type="text/javascript">
+        function confirmarEliminacion() {
+            var confirmacion = confirm('¿Estás seguro de que quieres eliminar este registro?');
+            return confirmacion;
+        }
+    </script>
 </body>
 </html>

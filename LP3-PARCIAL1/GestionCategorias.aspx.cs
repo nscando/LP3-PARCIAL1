@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -20,6 +21,15 @@ namespace LP3_PARCIAL1
 
                 if ( result != 0 )
                     {
+                    string fechaHoraActual = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+
+                    StreamWriter streamWriter = new StreamWriter($"{Server.MapPath(".")}/categoriasLOG.txt", true);
+                    streamWriter.WriteLine("Fecha y Hora de Inserción: " + fechaHoraActual.ToString());
+                    streamWriter.WriteLine("Categoria Creada: " + TextBoxCategoria.Text);
+                    streamWriter.WriteLine();
+                    streamWriter.WriteLine("------------------------------");
+                    streamWriter.Close();
+
                     string script = "alert('Registro Agregado Correctamente!');";
                     ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
 
@@ -60,6 +70,15 @@ namespace LP3_PARCIAL1
 
                 if ( result != 0 )
                     {
+                    string fechaHoraActual = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+
+                    StreamWriter streamWriter = new StreamWriter($"{Server.MapPath(".")}/categoriasLOG.txt", true);
+                    streamWriter.WriteLine("Fecha y Hora de Actualizacion: " + fechaHoraActual.ToString());
+                    streamWriter.WriteLine("Categoria Actualizada: " + TextBoxCategoria.Text);
+                    streamWriter.WriteLine();
+                    streamWriter.WriteLine("------------------------------");
+                    streamWriter.Close();
+
                     string script = "alert('Registro Actualizado Correctamente! ');";
                     ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
                     TextBoxCategoria.Text = "";

@@ -1,0 +1,20 @@
+Fecha y Hora de Inserción: 20231013_114150
+Categoria: Nueva Categoria txt
+Descripción: Prueba insercion log
+
+------------------------------
+Fecha y Hora de Actualizacion: 20231013_114221
+Categoria Actualizada: Prueba Modif Log
+Descripción Actualizada: Modificacion update log
+
+------------------------------
+Fecha y Hora de Inserción: 20231013_120841
+Categoria: Prueba9
+Descripción: jkhkjhgjkhgjkhghjk
+
+------------------------------
+Fecha y Hora de Actualizacion: 20231013_120857
+Categoria Actualizada: Prueba9
+Descripción Actualizada: jkhkjhgjkhgjkhghjk modificacion actualizacion
+
+------------------------------

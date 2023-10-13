@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Web.UI.WebControls;
 
 namespace LP3_PARCIAL1
     {
@@ -32,14 +31,11 @@ namespace LP3_PARCIAL1
 
                     string fechaHoraActual = DateTime.Now.ToString("yyyyMMdd_HHmmss");
 
-                    StreamWriter streamWriter = new StreamWriter($"{Server.MapPath(".")}/denuncias.txt", true);
+                    StreamWriter streamWriter = new StreamWriter($"{Server.MapPath(".")}/denunciasLOG.txt", true);
                     streamWriter.WriteLine("Fecha y Hora de Inserción: " + fechaHoraActual.ToString());
-                    streamWriter.WriteLine("Categoria:");
-                    streamWriter.WriteLine(DropDownCategorias.SelectedItem.Text);
-                    streamWriter.WriteLine("Descripción:");
-                    streamWriter.WriteLine(DropDownCategorias.SelectedItem.Text);
-                    streamWriter.WriteLine(TextBoxDescripcion.Text);
-                    streamWriter.WriteLine(); 
+                    streamWriter.WriteLine("Categoria: " + DropDownCategorias.SelectedItem.Text);
+                    streamWriter.WriteLine("Descripción: " + TextBoxDescripcion.Text);
+                    streamWriter.WriteLine();
                     streamWriter.WriteLine("------------------------------");
                     streamWriter.Close();
 
@@ -74,6 +70,16 @@ namespace LP3_PARCIAL1
 
             SqlDataDenuncias.Update();
             GridViewDenuncias.DataBind();
+
+            string fechaHoraActual = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+
+            StreamWriter streamWriter = new StreamWriter($"{Server.MapPath(".")}/denunciasLOG.txt", true);
+            streamWriter.WriteLine("Fecha y Hora de Actualizacion: " + fechaHoraActual.ToString());
+            streamWriter.WriteLine("Categoria Actualizada: " + DropDownCategorias.SelectedItem.Text);
+            streamWriter.WriteLine("Descripción Actualizada: " + TextBoxDescripcion.Text);
+            streamWriter.WriteLine();
+            streamWriter.WriteLine("------------------------------");
+            streamWriter.Close();
             }
 
         protected void btnFiltrar_Click ( object sender, EventArgs e )

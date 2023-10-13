@@ -8,17 +8,21 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>GESTION DENUNCIAS</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
     <style>
         body {
             font-family: Arial, sans-serif;
         }
+
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
         }
+
         .mt-4 {
             margin-top: 1.5rem !important;
         }
+
         .form-group {
             margin-bottom: 1rem;
         }
@@ -27,36 +31,36 @@
 <body class="bg-light text-center">
     <form id="form1" runat="server" class="container">
         <div>
+            <asp:HyperLink ID="HyperLink1" CssClass="btn btn-info ml-2 mt-2" runat="server" NavigateUrl="~/Principal.aspx">Volver</asp:HyperLink>
             <h1 class="mt-4">GESTION DE DENUNCIAS</h1>
         </div>
         <div class="form-group">
-            <asp:Label ID="Label1" runat="server" Text="Categoria: " ></asp:Label>
-            <asp:DropDownList ID="DropDownCategorias" runat="server" DataSourceID="SqlDataCategoria"  DataTextField="nombre" DataValueField="id" CssClass="form-control">
-              
+            <asp:Label ID="Label1" runat="server" Text="Categoria: "></asp:Label>
+            <asp:DropDownList ID="DropDownCategorias" runat="server" DataSourceID="SqlDataCategoria" DataTextField="nombre" DataValueField="id" CssClass="form-control">
             </asp:DropDownList>
-            <asp:Button ID="btnFiltrar" runat="server"  CssClass="btn btn-info mt-2" Text="Filtrar" OnClick="btnFiltrar_Click" /><asp:Button ID="btnLimpiarFiltro" runat="server"  CssClass="btn btn-secondary mt-2 ml-2" Text="Limpiar Filtro" OnClick="btnLimpiarFiltro_Click" />
+            <asp:Button ID="btnFiltrar" runat="server" CssClass="btn btn-info mt-2" Text="Filtrar" OnClick="btnFiltrar_Click" /><asp:Button ID="btnLimpiarFiltro" runat="server" CssClass="btn btn-secondary mt-2 ml-2" Text="Limpiar Filtro" OnClick="btnLimpiarFiltro_Click" />
         </div>
         <div class="form-group">
             <asp:Label ID="Label2" runat="server" Text="Descripcion: "></asp:Label>
             <asp:TextBox ID="TextBoxDescripcion" placeholder="Ingrese descripción de su denuncia" class="form-control form-control-lg mt-2" runat="server" TextMode="MultiLine"></asp:TextBox>
-    
+
         </div>
         <asp:Button ID="agregarDenuncia" runat="server" Text="Nueva Denuncia" CssClass="btn btn-primary" OnClick="agregarDenuncia_Click" />
-           <asp:Button ID="editarDenuncia" CssClass="btn btn-warning" runat="server" Text="Actualizar" OnClick="editarDenuncia_Click" />
-<asp:GridView ID="GridViewDenuncias" runat="server" CssClass="table table-striped table-bordered mt-4" AutoGenerateColumns="False" DataKeyNames="id,Expr1" DataSourceID="SqlDataDenuncias" OnSelectedIndexChanged="GridViewDenuncias_SelectedIndexChanged">
-    <Columns>
-        <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-        <asp:BoundField DataField="texto" HeaderText="Descripcion" SortExpression="texto" />
-        <asp:BoundField DataField="idDenunciaCategoria" SortExpression="idDenunciaCategoria" />
-        <asp:BoundField DataField="nombre" HeaderText="Categoria" SortExpression="nombre" />
-        <asp:BoundField DataField="Expr1" HeaderText="ID Cat" InsertVisible="False" ReadOnly="True" SortExpression="Expr1" />
-        <asp:CommandField ShowSelectButton="True" ButtonType="Button" ShowDeleteButton="True" AccessibleHeaderText="Acciones" HeaderText="Seleccione Opción" />
-    </Columns>
-</asp:GridView>
+        <asp:Button ID="editarDenuncia" CssClass="btn btn-warning" runat="server" Text="Actualizar" OnClick="editarDenuncia_Click" />
+        <asp:GridView ID="GridViewDenuncias" runat="server" CssClass="table table-striped table-bordered mt-4" AutoGenerateColumns="False" DataKeyNames="id,Expr1" DataSourceID="SqlDataDenuncias" OnSelectedIndexChanged="GridViewDenuncias_SelectedIndexChanged">
+            <Columns>
+                <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                <asp:BoundField DataField="texto" HeaderText="Descripcion" SortExpression="texto" />
+                <asp:BoundField DataField="idDenunciaCategoria" SortExpression="idDenunciaCategoria" />
+                <asp:BoundField DataField="nombre" HeaderText="Categoria" SortExpression="nombre" />
+                <asp:BoundField DataField="Expr1" HeaderText="ID Cat" InsertVisible="False" ReadOnly="True" SortExpression="Expr1" />
+                <asp:CommandField ShowSelectButton="True" ButtonType="Button" ShowDeleteButton="True" AccessibleHeaderText="Acciones" HeaderText="Seleccione Opción" />
+            </Columns>
+        </asp:GridView>
 
-     
 
-        <asp:SqlDataSource ID="SqlDataCategoria" runat="server" ConnectionString="<%$ ConnectionStrings:cadena %>" DeleteCommand="DELETE FROM [DenunciaCategorias] WHERE [id] = @id" InsertCommand="INSERT INTO [DenunciaCategorias] ([nombre]) VALUES (@nombre)" SelectCommand="SELECT id, nombre FROM DenunciaCategorias" UpdateCommand="UPDATE [DenunciaCategorias] SET [nombre] = @nombre WHERE [id] = @id" >
+
+        <asp:SqlDataSource ID="SqlDataCategoria" runat="server" ConnectionString="<%$ ConnectionStrings:cadena %>" DeleteCommand="DELETE FROM [DenunciaCategorias] WHERE [id] = @id" InsertCommand="INSERT INTO [DenunciaCategorias] ([nombre]) VALUES (@nombre)" SelectCommand="SELECT id, nombre FROM DenunciaCategorias" UpdateCommand="UPDATE [DenunciaCategorias] SET [nombre] = @nombre WHERE [id] = @id">
             <DeleteParameters>
                 <asp:Parameter Name="id" Type="Int32" />
             </DeleteParameters>
@@ -84,11 +88,11 @@
             </UpdateParameters>
         </asp:SqlDataSource>
     </form>
-    </body>
-        <!-- Scripts de Bootstrap (jQuery y Popper.js) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+</body>
+<!-- Scripts de Bootstrap (jQuery y Popper.js) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 
-    <!-- Script de Bootstrap -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Script de Bootstrap -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </html>
