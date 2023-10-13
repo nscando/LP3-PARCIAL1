@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Web.UI.WebControls;
 
 namespace LP3_PARCIAL1
     {
@@ -24,11 +26,28 @@ namespace LP3_PARCIAL1
                 int result = SqlDataDenuncias.Insert();
                 GridViewDenuncias.DataBind();
 
+
                 if ( result != 0 )
                     {
+
+                    string fechaHoraActual = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+
+                    StreamWriter streamWriter = new StreamWriter($"{Server.MapPath(".")}/denuncias.txt", true);
+                    streamWriter.WriteLine("Fecha y Hora de Inserción: " + fechaHoraActual.ToString());
+                    streamWriter.WriteLine("Categoria:");
+                    streamWriter.WriteLine(DropDownCategorias.SelectedItem.Text);
+                    streamWriter.WriteLine("Descripción:");
+                    streamWriter.WriteLine(DropDownCategorias.SelectedItem.Text);
+                    streamWriter.WriteLine(TextBoxDescripcion.Text);
+                    streamWriter.WriteLine(); 
+                    streamWriter.WriteLine("------------------------------");
+                    streamWriter.Close();
+
+
                     string script = "alert('Registro Agregado Correctamente!');";
                     ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
                     LimpiarControles();
+
                     }
                 else
                     {
@@ -38,15 +57,15 @@ namespace LP3_PARCIAL1
                 }
             else
                 {
-                string script = "alert('El campo *Nombre Categoria* no puede estar vacío.');";
+                string script = "alert('El campo *Descripción* no puede estar vacío.');";
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
                 }
             }
 
         protected void GridViewDenuncias_SelectedIndexChanged ( object sender, EventArgs e )
             {
-            TextBoxDescripcion.Text = GridViewDenuncias.SelectedRow.Cells[2].Text;
-            DropDownCategorias.SelectedValue = GridViewDenuncias.SelectedRow.Cells[3].Text;
+            TextBoxDescripcion.Text = GridViewDenuncias.SelectedRow.Cells[1].Text;
+            DropDownCategorias.SelectedValue = GridViewDenuncias.SelectedRow.Cells[4].Text;
 
             }
 
@@ -54,7 +73,21 @@ namespace LP3_PARCIAL1
             {
 
             SqlDataDenuncias.Update();
+            GridViewDenuncias.DataBind();
             }
+
+        protected void btnFiltrar_Click ( object sender, EventArgs e )
+            {
+            SqlDataDenuncias.FilterExpression = "idDenunciaCategoria = " + DropDownCategorias.SelectedValue;
+            }
+
+        protected void btnLimpiarFiltro_Click ( object sender, EventArgs e )
+            {
+            SqlDataDenuncias.FilterExpression = "";
+            SqlDataDenuncias.FilterParameters.Clear();
+
+            }
+
+
         }
     }
-    
