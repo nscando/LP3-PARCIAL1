@@ -11,23 +11,23 @@
 </head>
 <body class="bg-light text-center">
     <form id="form1" runat="server" class="container mt-5 text-center">
-        <asp:HyperLink ID="HyperLink1" CssClass="btn btn-info ml-2 mt-2" runat="server" NavigateUrl="~/Principal.aspx">Volver</asp:HyperLink>
+        <asp:HyperLink ID="HyperLink1" CssClass="btn btn-info ml-2 mt-2" runat="server" NavigateUrl="~/Principal.aspx" ToolTip="Volver al Inicio">Volver</asp:HyperLink>
         <h1 class="mt-4">GESTION CATEGORIAS DE DENUNCIAS
         </h1>
 
         <div class="form-group d-inline-block">
             <label for="TextBox1">Nombre Categoria: * </label>
-            <asp:TextBox ID="TextBoxCategoria" runat="server" class="form-control"></asp:TextBox>
+            <asp:TextBox ID="TextBoxCategoria" runat="server" class="form-control" ToolTip="Ingrese Categoría a Crear o Modificar"></asp:TextBox>
 
 
-            <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-primary ml-2 mt-2" OnClick="btnAgregar_Click" />
-            <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-warning ml-2 mt-2" OnClick="btnModificar_Click" />
-            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger ml-2 mt-2" OnClick="btnEliminar_Click" OnClientClick="return confirmarEliminacion();" />
+            <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-primary ml-2 mt-2" OnClick="btnAgregar_Click" ToolTip="Presione para crear nueva Categoria" />
+            <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-warning ml-2 mt-2" OnClick="btnModificar_Click" ToolTip="Presione para modificar categoria" />
+            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger ml-2 mt-2" OnClick="btnEliminar_Click" OnClientClick="return confirmarEliminacion();" ToolTip="Presione para eliminar Categoria" />
         </div>
 
         <div class="row justify-content-center mt-4">
             <div class="col-6">
-                <asp:ListBox ID="ListBox1" runat="server" DataSourceID="SqlDataCategorias" DataTextField="nombre" DataValueField="id" CssClass="form-control" Height="224px" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged"></asp:ListBox>
+                <asp:ListBox ID="ListBox1" runat="server" DataSourceID="SqlDataCategorias" DataTextField="nombre" DataValueField="id" CssClass="form-control" Height="224px" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" ToolTip="Listado de Categorias"></asp:ListBox>
             </div>
         </div>
 

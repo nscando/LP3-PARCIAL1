@@ -22,3 +22,7 @@ Fecha y Hora de Actualizacion: 20231013_120820
 Categoria Actualizada: Prueba9
 
 ------------------------------
+Fecha y Hora de Eliminacion: 20231014_105029
+Categoria Eliminada: Prueba9
+
+------------------------------

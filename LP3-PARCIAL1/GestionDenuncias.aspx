@@ -31,23 +31,23 @@
 <body class="bg-light text-center">
     <form id="form1" runat="server" class="container">
         <div>
-            <asp:HyperLink ID="HyperLink1" CssClass="btn btn-info ml-2 mt-2" runat="server" NavigateUrl="~/Principal.aspx">Volver</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink1" CssClass="btn btn-info ml-2 mt-2" runat="server" NavigateUrl="~/Principal.aspx" ToolTip="Volver al Inicio">Volver</asp:HyperLink>
             <h1 class="mt-4">GESTION DE DENUNCIAS</h1>
         </div>
         <div class="form-group">
             <asp:Label ID="Label1" runat="server" Text="Categoria: "></asp:Label>
-            <asp:DropDownList ID="DropDownCategorias" runat="server" DataSourceID="SqlDataCategoria" DataTextField="nombre" DataValueField="id" CssClass="form-control">
+            <asp:DropDownList ID="DropDownCategorias" runat="server" DataSourceID="SqlDataCategoria" DataTextField="nombre" DataValueField="id" CssClass="form-control" ToolTip="Seleccione una Categoria">
             </asp:DropDownList>
-            <asp:Button ID="btnFiltrar" runat="server" CssClass="btn btn-info mt-2" Text="Filtrar" OnClick="btnFiltrar_Click" /><asp:Button ID="btnLimpiarFiltro" runat="server" CssClass="btn btn-secondary mt-2 ml-2" Text="Limpiar Filtro" OnClick="btnLimpiarFiltro_Click" />
+            <asp:Button ID="btnFiltrar" runat="server" CssClass="btn btn-info mt-2" Text="Filtrar" OnClick="btnFiltrar_Click" ToolTip="Presione para filtrar datos" /><asp:Button ID="btnLimpiarFiltro" runat="server" CssClass="btn btn-secondary mt-2 ml-2" Text="Limpiar Filtro" OnClick="btnLimpiarFiltro_Click" ToolTip="Presione para eliminar filtros" />
         </div>
         <div class="form-group">
             <asp:Label ID="Label2" runat="server" Text="Descripcion: "></asp:Label>
             <asp:TextBox ID="TextBoxDescripcion" placeholder="Ingrese descripción de su denuncia" class="form-control form-control-lg mt-2" runat="server" TextMode="MultiLine"></asp:TextBox>
 
         </div>
-        <asp:Button ID="agregarDenuncia" runat="server" Text="Nueva Denuncia" CssClass="btn btn-primary" OnClick="agregarDenuncia_Click" />
-        <asp:Button ID="editarDenuncia" CssClass="btn btn-warning" runat="server" Text="Actualizar" OnClick="editarDenuncia_Click" />
-        <asp:GridView ID="GridViewDenuncias" runat="server" CssClass="table table-striped table-bordered mt-4" AutoGenerateColumns="False" DataKeyNames="id,Expr1" DataSourceID="SqlDataDenuncias" OnSelectedIndexChanged="GridViewDenuncias_SelectedIndexChanged">
+        <asp:Button ID="agregarDenuncia" runat="server" Text="Nueva Denuncia" CssClass="btn btn-primary" OnClick="agregarDenuncia_Click" ToolTip="Presione para generar una nueva denuncia" />
+        <asp:Button ID="editarDenuncia" CssClass="btn btn-warning" runat="server" Text="Actualizar" OnClick="editarDenuncia_Click" ToolTip="Presione para actualizar los datos de su denuncia" />
+        <asp:GridView ID="GridViewDenuncias" runat="server" CssClass="table table-striped table-bordered mt-4" AutoGenerateColumns="False" DataKeyNames="id,Expr1" DataSourceID="SqlDataDenuncias" OnSelectedIndexChanged="GridViewDenuncias_SelectedIndexChanged" ToolTip="Listado de Denuncias">
             <Columns>
                 <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
                 <asp:BoundField DataField="texto" HeaderText="Descripcion" SortExpression="texto" />
